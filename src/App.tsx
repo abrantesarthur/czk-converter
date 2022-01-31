@@ -1,9 +1,7 @@
+import ExchangeRates from "./components/ExchangeRates";
+
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <ExchangeRates />;
 }
 
 export default App;
