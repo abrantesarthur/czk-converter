@@ -30,16 +30,16 @@ export default function ExchangeRatesTable() {
       <h1>Convert to CZK</h1>
       <StyledTable>
         <thead>
-          <tr>
+          <tr key={"thead>tr"}>
             <th>Country</th>
             <th>Currency</th>
             <th>To CZK</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((exchangeRate) => {
+          {data.map((exchangeRate, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <th>{exchangeRate.country}</th>
                 <th>{exchangeRate.amount + " " + exchangeRate.code}</th>
                 <th>{exchangeRate.rate + " CZK"}</th>
