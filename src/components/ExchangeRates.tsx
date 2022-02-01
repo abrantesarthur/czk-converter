@@ -2,6 +2,7 @@ import React from "react";
 import { fecthExchangeRates } from "../services/exchangeRates";
 import { useQuery } from "react-query";
 import { StyledTable } from "./styles/Table.styled.";
+import { Container, Column } from "./styles/Container.styled";
 
 export default function ExchangeRates() {
   const { data, status } = useQuery("exchangeRates", fecthExchangeRates);
@@ -24,31 +25,31 @@ export default function ExchangeRates() {
     );
   }
 
-  console.log(data);
-
   return (
-    <div>
-      <h1>Convert to CZK</h1>
-      <StyledTable>
-        <thead>
-          <tr>
-            <th>Country</th>
-            <th>Currency</th>
-            <th>To CZK</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((exchangeRate) => {
-            return (
-              <tr>
-                <th>{exchangeRate.country}</th>
-                <th>{exchangeRate.amount + " " + exchangeRate.code}</th>
-                <th>{exchangeRate.rate + " CZK"}</th>
-              </tr>
-            );
-          })}
-        </tbody>
-      </StyledTable>
-    </div>
+    <Container>
+      <Column>
+        <h1>Convert to CZK</h1>
+        <StyledTable>
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>Currency</th>
+              <th>To CZK</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((exchangeRate) => {
+              return (
+                <tr>
+                  <th>{exchangeRate.country}</th>
+                  <th>{exchangeRate.amount + " " + exchangeRate.code}</th>
+                  <th>{exchangeRate.rate + " CZK"}</th>
+                </tr>
+              );
+            })}
+          </tbody>
+        </StyledTable>
+      </Column>
+    </Container>
   );
 }
