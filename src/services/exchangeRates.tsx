@@ -9,7 +9,7 @@ interface ExchangeRate {
 const fecthExchangeRates = async (): Promise<ExchangeRate[]> => {
   try {
     const response = await fetch(
-      "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
+      "https://www.cnb.cz/en/financil-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
     );
     const data = await response.text();
     return parseExchangeRatesData(data);
