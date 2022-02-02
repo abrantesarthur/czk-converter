@@ -53,20 +53,25 @@ export class ExchangeRates {
   };
 
   parse = (data: string): ExchangeRates => {
+    // parse data, map it to list of ExchangeRate, and filter out invalid results
     return new ExchangeRates(
       data
         .split("\n")
         .slice(2, -1)
         .map((line) => {
           let values = line.split("|");
-          return new ExchangeRate(
-            values[0],
-            values[1],
-            Number(values[2]),
-            values[3],
-            round(Number(values[4]))
-          );
+          if (values.length === 5) {
+            return new ExchangeRate(
+              values[0],
+              values[1],
+              Number(values[2]),
+              values[3],
+              round(Number(values[4]))
+            );
+          }
+          return new ExchangeRate("", "", 0, "", 0);
         })
+        .filter((exchangeRate) => exchangeRate.country !== "")
     );
   };
 }
