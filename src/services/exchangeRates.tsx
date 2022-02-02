@@ -19,10 +19,9 @@ export class ExchangeRate {
     this.rate = rate;
   }
 
-  getRateFrom(currencyName: string) {
-    if ((currencyName = this.currencyName)) {
-      return this.rate;
-    }
+  // TODO: fix
+  getRate() {
+    return this.rate;
   }
 }
 
@@ -45,7 +44,13 @@ export class ExchangeRates {
     }
   };
 
-  getRatesFrom = (currencyCode: string) => {};
+  getRateFrom = (currencyCode: string): number | undefined => {
+    for (let i = 0; i < this.list.length; i++) {
+      if (this.list[i].currencyCode === currencyCode) {
+        return this.list[i].getRate();
+      }
+    }
+  };
 
   parse = (data: string): ExchangeRates => {
     return new ExchangeRates(
@@ -70,39 +75,3 @@ const round = (value: number, decimals = 2) => {
   decimals = decimals < 1 ? 1 : decimals;
   return Math.round(value * 10 ** decimals) / 10 ** decimals;
 };
-
-export enum CurrencyCode {
-  AUD = "AUD",
-  BRL = "BRL",
-  BGN = "BGN",
-  CAD = "CAD",
-  CNY = "CNY",
-  HRK = "HRK",
-  DKK = "DKK",
-  EUR = "EUR",
-  HKD = "HKD",
-  HUF = "HUF",
-  ISK = "ISK",
-  XDR = "XDR",
-  INR = "INR",
-  IDR = "IDR",
-  ILS = "ILS",
-  HPY = "HPY",
-  MYR = "MYR",
-  MXN = "MXN",
-  NZD = "NZD",
-  NOK = "NOK",
-  PHP = "PHP",
-  PLN = "PLN",
-  RON = "RON",
-  RUB = "RUB",
-  SGD = "SGD",
-  ZAR = "ZAR",
-  KRW = "KRW",
-  SEK = "SEK",
-  CHF = "CHF",
-  THB = "THB",
-  TRY = "TRY",
-  GBP = "GBP",
-  USD = "USD",
-}
