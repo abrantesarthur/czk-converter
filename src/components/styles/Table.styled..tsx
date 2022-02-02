@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const TableTitle = styled.h1`
-  font-family: Helvetica;
   font-size: 30px;
   margin: 5vh 0 1hv 0;
 `;
@@ -9,7 +8,6 @@ export const TableTitle = styled.h1`
 export const StyledTable = styled.table`
   width: 50vw;
   margin: 0 0 5vh 0;
-  font-family: Helvetica;
 
   border-radius: 10px;
   border-collapse: collapse;

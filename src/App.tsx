@@ -1,12 +1,13 @@
 import { QueryClientProvider, QueryClient } from "react-query";
 import ExchangeRatesPage from "./components/ExchangeRatesPage";
+import Global from "./components/styles/Global.styled";
 
 const queryClient = new QueryClient();
 
-// TODO: create global style
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Global />
       <ExchangeRatesPage></ExchangeRatesPage>
     </QueryClientProvider>
   );
