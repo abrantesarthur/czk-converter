@@ -8,6 +8,7 @@ export const StyledTable = styled.table`
   border-collapse: collapse;
   box-shadow: 5px 10px 20px 10px #eee;
   overflow: hidden;
+  margin: 5vh 0 10vh 0;
 
   thead tr {
     background-color: #f0f5fa;

@@ -23,7 +23,7 @@ export default function ExchangeRatesTable(props: {
               <tr key={index}>
                 <th>{exchangeRate.country}</th>
                 <th>{exchangeRate.amount + " " + exchangeRate.code}</th>
-                <th>{exchangeRate.rate + " CZK"}</th>
+                <th>{exchangeRate.rate.toFixed(2) + " CZK"}</th>
               </tr>
             );
           })}
