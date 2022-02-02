@@ -2,6 +2,7 @@ import { StyledTable } from "./styles/Table.styled.";
 import { ExchangeRate } from "../interfaces";
 
 // TODO: add a title
+// TODO: paginate
 export default function ExchangeRatesTable(props: {
   exchangeRates: ExchangeRate[];
 }) {
@@ -19,7 +20,7 @@ export default function ExchangeRatesTable(props: {
           return (
             <tr key={index}>
               <th>{exchangeRate.country}</th>
-              <th>{exchangeRate.amount + " " + exchangeRate.code}</th>
+              <th>{exchangeRate.amount + " " + exchangeRate.currencyCode}</th>
               <th>{exchangeRate.rate.toFixed(2) + " CZK"}</th>
             </tr>
           );

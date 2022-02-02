@@ -10,11 +10,14 @@ import {
 } from "./styles/Form.styled";
 
 // TODO: add a title
+// TODO: fix responsiveness
+// TODO: warn user if input is missing
 export default function ExchangeRatesForm(props: {
   exchangeRates: ExchangeRate[];
 }) {
   const [amount, setAmount] = useState("");
-  const [currency, setCurrency] = useState("");
+  const [currencyCode, setCurrencyCode] = useState("");
+  const [rateInCZK, setRateInCZK] = useState("");
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const re = /^[-+]?[0-9]*\.?[0-9]*$/;
@@ -25,15 +28,14 @@ export default function ExchangeRatesForm(props: {
   };
 
   const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCurrency(e.target.value);
+    setCurrencyCode(e.target.value);
   };
 
-  // TODO: warn user if input is missing
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // stop browser from refreshing page
     e.preventDefault();
 
-    console.log(currency);
+    console.log(currencyCode);
     console.log(amount);
   };
 
@@ -51,18 +53,21 @@ export default function ExchangeRatesForm(props: {
         </Column>
         <Column alignItems="align-start">
           <StyledLabel>From</StyledLabel>
-          <DropdownMenu value={currency} onChange={handleCurrencyChange}>
-            {props.exchangeRates.map((exchangeRate) => {
+          <DropdownMenu value={currencyCode} onChange={handleCurrencyChange}>
+            {props.exchangeRates.map((exchangeRate, index) => {
               return (
-                <option value={exchangeRate.code}>
-                  {exchangeRate.code + " - " + exchangeRate.currency}
+                <option key={index} value={exchangeRate.currencyCode}>
+                  {exchangeRate.currencyCode +
+                    " - " +
+                    exchangeRate.currencyName}
                 </option>
               );
             })}
           </DropdownMenu>
         </Column>
       </Row>
-      <Row justifyContent="flex-end">
+      <Row justifyContent="space-between">
+        <h2>{rateInCZK ?? ""}</h2>
         <SubmitButton type="submit" value="Convert To CZK"></SubmitButton>
       </Row>
     </StyledForm>
