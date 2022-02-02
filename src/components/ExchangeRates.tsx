@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
-import { fecthExchangeRates } from "../services/exchangeRates";
+import { ExchangeRates } from "../services/exchangeRates";
 import ExchangeRatesForm from "./ExchangeRatesForm";
 import ExchangeRatesTable from "./ExchangeRatesTable";
 import { Column, Container } from "./styles/Container.styled";
 
-export default function ExchangeRates() {
-  const { data, status } = useQuery("exchangeRates", fecthExchangeRates);
+export default function ExchangeRatesPage() {
+  const { data, status } = useQuery("exchangeRates", ExchangeRates.get);
 
   // TODO: fix loading screen
   if (status === "loading") {

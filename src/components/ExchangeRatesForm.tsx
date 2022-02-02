@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ExchangeRate } from "../interfaces";
+import { ExchangeRates } from "../services/exchangeRates";
 import { Column, Row } from "./styles/Container.styled";
 import {
   DropdownMenu,
@@ -13,7 +13,7 @@ import {
 // TODO: fix responsiveness
 // TODO: warn user if input is missing
 export default function ExchangeRatesForm(props: {
-  exchangeRates: ExchangeRate[];
+  exchangeRates: ExchangeRates;
 }) {
   const [amount, setAmount] = useState("");
   const [currencyCode, setCurrencyCode] = useState("");
@@ -54,7 +54,7 @@ export default function ExchangeRatesForm(props: {
         <Column alignItems="align-start">
           <StyledLabel>From</StyledLabel>
           <DropdownMenu value={currencyCode} onChange={handleCurrencyChange}>
-            {props.exchangeRates.map((exchangeRate, index) => {
+            {props.exchangeRates.list.map((exchangeRate, index) => {
               return (
                 <option key={index} value={exchangeRate.currencyCode}>
                   {exchangeRate.currencyCode +

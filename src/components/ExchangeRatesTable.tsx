@@ -1,10 +1,10 @@
 import { StyledTable } from "./styles/Table.styled.";
-import { ExchangeRate } from "../interfaces";
+import { ExchangeRates } from "../services/exchangeRates";
 
 // TODO: add a title
 // TODO: paginate
 export default function ExchangeRatesTable(props: {
-  exchangeRates: ExchangeRate[];
+  exchangeRates: ExchangeRates;
 }) {
   return (
     <StyledTable>
@@ -16,7 +16,7 @@ export default function ExchangeRatesTable(props: {
         </tr>
       </thead>
       <tbody>
-        {props.exchangeRates.map((exchangeRate, index) => {
+        {props.exchangeRates.list.map((exchangeRate, index) => {
           return (
             <tr key={index}>
               <th>{exchangeRate.country}</th>
