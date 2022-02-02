@@ -3,12 +3,12 @@ import { StyledTable } from "./styles/Table.styled.";
 import { Column } from "./styles/Container.styled";
 import { ExchangeRate } from "../interfaces";
 
+// TODO: add a title
 export default function ExchangeRatesTable(props: {
   exchangeRates: ExchangeRate[];
 }) {
   return (
     <Column>
-      <h1>Convert to CZK</h1>
       <StyledTable>
         <thead>
           <tr key={"thead>tr"}>

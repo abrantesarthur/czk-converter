@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { ExchangeRate } from "../interfaces";
+import {
+  DropdownMenu,
+  StyledForm,
+  StyledLabel,
+  SubmitButton,
+  TextInput,
+} from "./styles/Form.styled";
 
-// TODO: allow only numbers to be inserted in the form
+// TODO: add a title
 export default function ExchangeRateForm(props: {
   exchangeRates: ExchangeRate[];
 }) {
@@ -9,7 +16,7 @@ export default function ExchangeRateForm(props: {
   const [currency, setCurrency] = useState("");
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const re = /^[0-9\b]+$/;
+    const re = /^[-+]?[0-9]*\.?[0-9]*$/;
     // update state only if input is a number
     if (e.target.value === "" || re.test(e.target.value)) {
       setAmount(e.target.value);
@@ -26,28 +33,25 @@ export default function ExchangeRateForm(props: {
   };
 
   return (
-    <div>
-      <h1>form</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="amount">Amount</label>
-          <input
-            type="text"
-            id="amount"
-            value={amount}
-            onChange={handleAmountChange}
-          ></input>
-          <label htmlFor="amount">Currency</label>
-          <select value={currency} onChange={handleCurrencyChange}>
-            {props.exchangeRates.map((exchangeRate) => {
-              return (
-                <option value={exchangeRate.code}>{exchangeRate.code}</option>
-              );
-            })}
-          </select>
-          <input type="submit" value="Convert"></input>
-        </div>
-      </form>
-    </div>
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledLabel htmlFor="amount">Amount</StyledLabel>
+      <TextInput
+        type="text"
+        id="amount"
+        value={amount}
+        onChange={handleAmountChange}
+      ></TextInput>
+      <StyledLabel htmlFor="amount">From</StyledLabel>
+      <DropdownMenu value={currency} onChange={handleCurrencyChange}>
+        {props.exchangeRates.map((exchangeRate) => {
+          return (
+            <option value={exchangeRate.code}>
+              {exchangeRate.code + " - " + exchangeRate.currency}
+            </option>
+          );
+        })}
+      </DropdownMenu>
+      <SubmitButton type="submit" value="Convert To CZK"></SubmitButton>
+    </StyledForm>
   );
 }
