@@ -68,7 +68,7 @@ export class ExchangeRates {
           }
           return new ExchangeRate("", "", 0, "", 0);
         })
-        .filter((exchangeRate) => exchangeRate.amount === 0)
+        .filter((exchangeRate) => exchangeRate.amount !== 0)
     );
   };
 }

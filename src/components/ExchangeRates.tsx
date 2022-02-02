@@ -24,6 +24,7 @@ export default function ExchangeRatesPage() {
       </div>
     );
   }
+
   return (
     <Container>
       <Column>
