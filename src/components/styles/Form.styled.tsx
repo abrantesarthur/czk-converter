@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
+export const FormTitle = styled.h1`
+  font-family: Helvetica;
+  font-size: 30px;
+  margin: 5vh 0 1hv 0;
+`;
+
 export const StyledForm = styled.form`
   height: 20vh;
   width: 40vw;
   box-shadow: 5px 10px 20px 10px #eee;
   border-radius: 10px;
   padding: 5vh 3vw 5vh 3vw;
-  margin: 5vh 0 5vh 0;
+  margin: 0 0 5vh 0;
 `;
 
 export const StyledLabel = styled.label`

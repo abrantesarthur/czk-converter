@@ -9,9 +9,6 @@ import {
   TextInput,
 } from "./styles/Form.styled";
 
-// TODO: add a title
-// TODO: fix responsiveness
-// TODO: warn user if input is missing
 export default function ExchangeRatesForm(props: {
   exchangeRates: ExchangeRates;
 }) {
@@ -33,6 +30,7 @@ export default function ExchangeRatesForm(props: {
   };
 
   const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setRateInCZK(undefined);
     setCurrencyCode(e.target.value);
   };
 
