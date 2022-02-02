@@ -35,8 +35,7 @@ export default function ExchangeRatesForm(props: {
     // stop browser from refreshing page
     e.preventDefault();
 
-    console.log(currencyCode);
-    console.log(amount);
+    console.log(props.exchangeRates.getRateFrom(currencyCode));
   };
 
   return (

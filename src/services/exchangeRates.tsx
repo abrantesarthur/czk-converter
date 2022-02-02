@@ -19,10 +19,7 @@ export class ExchangeRate {
     this.rate = rate;
   }
 
-  // TODO: fix
-  getRate() {
-    return this.rate;
-  }
+  getRate = () => this.rate / this.amount;
 }
 
 export class ExchangeRates {
@@ -32,18 +29,6 @@ export class ExchangeRates {
     this.list = list;
   }
 
-  get = async (): Promise<ExchangeRates> => {
-    try {
-      const response = await fetch(
-        "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
-      );
-      const data = await response.text();
-      return this.parse(data);
-    } catch (_) {
-      return new ExchangeRates([]);
-    }
-  };
-
   getRateFrom = (currencyCode: string): number | undefined => {
     for (let i = 0; i < this.list.length; i++) {
       if (this.list[i].currencyCode === currencyCode) {
@@ -52,8 +37,20 @@ export class ExchangeRates {
     }
   };
 
-  parse = (data: string): ExchangeRates => {
-    // parse data, map it to list of ExchangeRate, and filter out invalid results
+  static get = async (): Promise<ExchangeRates> => {
+    try {
+      const response = await fetch(
+        "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
+      );
+      const data = await response.text();
+      return ExchangeRates.parse(data);
+    } catch (_) {
+      return new ExchangeRates([]);
+    }
+  };
+
+  // parse data, map it to list of ExchangeRate, and filter out invalid results
+  static parse = (data: string): ExchangeRates => {
     return new ExchangeRates(
       data
         .split("\n")
@@ -71,7 +68,7 @@ export class ExchangeRates {
           }
           return new ExchangeRate("", "", 0, "", 0);
         })
-        .filter((exchangeRate) => exchangeRate.country !== "")
+        .filter((exchangeRate) => exchangeRate.amount === 0)
     );
   };
 }
