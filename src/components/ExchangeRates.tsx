@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "react-query";
 import { fecthExchangeRates } from "../services/exchangeRates";
 import ExchangeRateForm from "./ExchangeRateForm";

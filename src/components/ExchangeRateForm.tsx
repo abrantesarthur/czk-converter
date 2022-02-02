@@ -39,8 +39,11 @@ export default function ExchangeRateForm(props: {
           ></input>
           <label htmlFor="amount">Currency</label>
           <select value={currency} onChange={handleCurrencyChange}>
-            <option value="usd">USD</option>
-            <option value="brl">BRL</option>
+            {props.exchangeRates.map((exchangeRate) => {
+              return (
+                <option value={exchangeRate.code}>{exchangeRate.code}</option>
+              );
+            })}
           </select>
           <input type="submit" value="Convert"></input>
         </div>
