@@ -9,7 +9,7 @@ import {
 } from "./styles/Form.styled";
 
 // TODO: add a title
-export default function ExchangeRateForm(props: {
+export default function ExchangeRatesForm(props: {
   exchangeRates: ExchangeRate[];
 }) {
   const [amount, setAmount] = useState("");

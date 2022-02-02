@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { fecthExchangeRates } from "../services/exchangeRates";
-import ExchangeRateForm from "./ExchangeRateForm";
+import ExchangeRatesForm from "./ExchangeRatesForm";
 import ExchangeRatesTable from "./ExchangeRatesTable";
 import { Column, Container } from "./styles/Container.styled";
 
@@ -27,7 +27,7 @@ export default function ExchangeRates() {
   return (
     <Container>
       <Column>
-        <ExchangeRateForm exchangeRates={data}></ExchangeRateForm>
+        <ExchangeRatesForm exchangeRates={data}></ExchangeRatesForm>
         <ExchangeRatesTable exchangeRates={data}></ExchangeRatesTable>
       </Column>
     </Container>
