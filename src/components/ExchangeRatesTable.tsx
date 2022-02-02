@@ -1,30 +1,11 @@
 import React from "react";
-import { fecthExchangeRates } from "../services/exchangeRates";
-import { useQuery } from "react-query";
 import { StyledTable } from "./styles/Table.styled.";
 import { Column } from "./styles/Container.styled";
+import { ExchangeRate } from "../interfaces";
 
-export default function ExchangeRatesTable() {
-  const { data, status } = useQuery("exchangeRates", fecthExchangeRates);
-
-  // TODO: fix loading screen
-  if (status === "loading") {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
-
-  // TODO: Improve error screen
-  if (status === "error" || data === undefined) {
-    return (
-      <div>
-        <h1>Error...</h1>
-      </div>
-    );
-  }
-
+export default function ExchangeRatesTable(props: {
+  exchangeRates: ExchangeRate[];
+}) {
   return (
     <Column>
       <h1>Convert to CZK</h1>
@@ -37,7 +18,7 @@ export default function ExchangeRatesTable() {
           </tr>
         </thead>
         <tbody>
-          {data.map((exchangeRate, index) => {
+          {props.exchangeRates.map((exchangeRate, index) => {
             return (
               <tr key={index}>
                 <th>{exchangeRate.country}</th>

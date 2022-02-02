@@ -1,10 +1,4 @@
-interface ExchangeRate {
-  country: string;
-  currency: string;
-  amount: number;
-  code: string;
-  rate: number;
-}
+import { ExchangeRate } from "../interfaces";
 
 const fecthExchangeRates = async (): Promise<ExchangeRate[]> => {
   try {

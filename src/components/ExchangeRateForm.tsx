@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { ExchangeRate } from "../interfaces";
 
 // TODO: allow only numbers to be inserted in the form
-export default function ExchangeRateForm() {
+export default function ExchangeRateForm(props: {
+  exchangeRates: ExchangeRate[];
+}) {
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("");
 
