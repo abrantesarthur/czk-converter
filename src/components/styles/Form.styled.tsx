@@ -14,6 +14,7 @@ export const StyledLabel = styled.label`
   font-size: 20px;
   margin: 0 0 1vh 0;
   font-weight: bold;
+  font-family: Helvetica;
 `;
 
 export const TextInput = styled.input`
@@ -22,6 +23,7 @@ export const TextInput = styled.input`
   border: 1px solid #bbb;
   border-radius: 5px;
   font-size: 18px;
+  font-family: Helvetica;
   padding: 10px 0px 10px 10px;
 `;
 
@@ -46,5 +48,6 @@ export const SubmitButton = styled.input`
   background-color: #0a146e;
   color: white;
   font-weight: bold;
+  font-family: Helvetica;
   cursor: pointer;
 `;

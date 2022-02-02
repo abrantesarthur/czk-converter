@@ -29,10 +29,10 @@ export class ExchangeRates {
     this.list = list;
   }
 
-  getRateFrom = (currencyCode: string): number | undefined => {
+  getRateFrom = (currencyCode: string, amount = 1.0): number | undefined => {
     for (let i = 0; i < this.list.length; i++) {
       if (this.list[i].currencyCode === currencyCode) {
-        return this.list[i].getRate();
+        return round(this.list[i].getRate() * amount);
       }
     }
   };
@@ -73,7 +73,7 @@ export class ExchangeRates {
   };
 }
 
-const round = (value: number, decimals = 2) => {
+export const round = (value: number, decimals = 3) => {
   decimals = decimals < 1 ? 1 : decimals;
   return Math.round(value * 10 ** decimals) / 10 ** decimals;
 };

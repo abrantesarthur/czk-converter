@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ExchangeRates } from "../services/exchangeRates";
+import { ExchangeRates, round } from "../services/exchangeRates";
 import { Column, Row } from "./styles/Container.styled";
 import {
   DropdownMenu,
@@ -15,14 +15,19 @@ import {
 export default function ExchangeRatesForm(props: {
   exchangeRates: ExchangeRates;
 }) {
-  const [amount, setAmount] = useState("");
-  const [currencyCode, setCurrencyCode] = useState("");
-  const [rateInCZK, setRateInCZK] = useState("");
+  const [amount, setAmount] = useState("1");
+  const [currencyCode, setCurrencyCode] = useState(
+    props.exchangeRates.list[0].currencyCode
+  );
+  const [rateInCZK, setRateInCZK] = useState<number | undefined>();
 
+  // TODO: set max
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const re = /^[-+]?[0-9]*\.?[0-9]*$/;
+
     // update state only if input is a number
     if (e.target.value === "" || re.test(e.target.value)) {
+      setRateInCZK(undefined);
       setAmount(e.target.value);
     }
   };
@@ -35,7 +40,12 @@ export default function ExchangeRatesForm(props: {
     // stop browser from refreshing page
     e.preventDefault();
 
-    console.log(props.exchangeRates.getRateFrom(currencyCode));
+    // TODO: warn user if amount is empty
+    if (amount === "") {
+      return;
+    }
+
+    setRateInCZK(props.exchangeRates.getRateFrom(currencyCode, Number(amount)));
   };
 
   return (
@@ -66,7 +76,16 @@ export default function ExchangeRatesForm(props: {
         </Column>
       </Row>
       <Row justifyContent="space-between">
-        <h2>{rateInCZK ?? ""}</h2>
+        <StyledLabel>
+          {rateInCZK === undefined
+            ? ""
+            : round(Number(amount)) +
+              " " +
+              currencyCode +
+              " = " +
+              rateInCZK +
+              " Czech Koruny"}
+        </StyledLabel>
         <SubmitButton type="submit" value="Convert To CZK"></SubmitButton>
       </Row>
     </StyledForm>
