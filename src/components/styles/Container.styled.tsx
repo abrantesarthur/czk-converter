@@ -4,16 +4,20 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
 `;
 
-export const Column = styled.div`
+export const Column = styled.div<{
+  justifyContent?: string;
+  alignItems?: string;
+}>`
   display: flex;
   flex-direction: column;
+  justify-content: ${(props) => props.justifyContent ?? "flex-start"};
+  align-items: ${(props) => props.alignItems ?? "center"};
 `;
 
-export const Row = styled.div`
+export const Row = styled.div<{ justifyContent?: string }>`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: ${(props) => props.justifyContent ?? "flex-start"};
 `;

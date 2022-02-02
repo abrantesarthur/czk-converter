@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const StyledTable = styled.table`
-  width: 600px;
+  width: 50vw;
+  margin: 5vh 0 5vh 0;
   font-family: Helvetica;
 
   border-radius: 10px;
   border-collapse: collapse;
   box-shadow: 5px 10px 20px 10px #eee;
   overflow: hidden;
-  margin: 5vh 0 10vh 0;
 
   thead tr {
     background-color: #f0f5fa;
