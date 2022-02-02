@@ -3,7 +3,7 @@ import ExchangeRatesPage from "./components/ExchangeRatesPage";
 
 const queryClient = new QueryClient();
 
-// TODO: make it responsive
+// TODO: create global style
 function App() {
   return (
     <QueryClientProvider client={queryClient}>

@@ -1,7 +1,6 @@
 import { StyledTable } from "./styles/Table.styled.";
 import { ExchangeRates } from "../services/exchangeRates";
 
-// TODO: add a title
 // TODO: paginate
 export default function ExchangeRatesTable(props: {
   exchangeRates: ExchangeRates;

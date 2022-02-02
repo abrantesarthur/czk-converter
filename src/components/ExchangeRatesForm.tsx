@@ -12,13 +12,12 @@ import {
 export default function ExchangeRatesForm(props: {
   exchangeRates: ExchangeRates;
 }) {
-  const [amount, setAmount] = useState("1");
+  const [amount, setAmount] = useState("");
   const [currencyCode, setCurrencyCode] = useState(
     props.exchangeRates.list[0].currencyCode
   );
   const [rateInCZK, setRateInCZK] = useState<number | undefined>();
 
-  // TODO: set max
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const re = /^[-+]?[0-9]*\.?[0-9]*$/;
 
@@ -38,7 +37,6 @@ export default function ExchangeRatesForm(props: {
     // stop browser from refreshing page
     e.preventDefault();
 
-    // TODO: warn user if amount is empty
     if (amount === "") {
       return;
     }

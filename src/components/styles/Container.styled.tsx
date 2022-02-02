@@ -18,6 +18,7 @@ export const Column = styled.div<{
 
 export const Row = styled.div<{ justifyContent?: string }>`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: ${(props) => props.justifyContent ?? "flex-start"};
 `;

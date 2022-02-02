@@ -7,8 +7,8 @@ export const FormTitle = styled.h1`
 `;
 
 export const StyledForm = styled.form`
-  height: 20vh;
-  width: 40vw;
+  height: 40vh;
+  width: 42vw;
   box-shadow: 5px 10px 20px 10px #eee;
   border-radius: 10px;
   padding: 5vh 3vw 5vh 3vw;
