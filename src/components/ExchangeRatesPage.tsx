@@ -31,14 +31,12 @@ export default function ExchangeRatesPage() {
 
   return (
     <Container>
-      (
       <Column alignItems="flex-start">
         <FormTitle>Convert Currencies to CZK</FormTitle>
         <ExchangeRatesForm exchangeRates={data}></ExchangeRatesForm>
         <TableTitle>CZK Conversion Table</TableTitle>
         <ExchangeRatesTable exchangeRates={data}></ExchangeRatesTable>
       </Column>
-      )
     </Container>
   );
 }
