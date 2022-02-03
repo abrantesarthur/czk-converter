@@ -39,13 +39,14 @@ export class ExchangeRates {
 
   static get = async (): Promise<ExchangeRates> => {
     try {
+      // EXCHANGE_RATES_URL could be set in production for instance
       const response = await fetch(
-        "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
+        process.env.EXCHANGE_RATES_URL || "http://localhost:5000/"
       );
       const data = await response.text();
       return ExchangeRates.parse(data);
-    } catch (_) {
-      return new ExchangeRates([]);
+    } catch (e) {
+      throw e;
     }
   };
 

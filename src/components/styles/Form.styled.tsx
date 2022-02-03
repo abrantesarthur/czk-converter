@@ -6,7 +6,7 @@ export const FormTitle = styled.h1`
 `;
 
 export const StyledForm = styled.form`
-  height: 30vh;
+  height: 200px;
   width: 42vw;
   box-shadow: 5px 10px 20px 10px #eee;
   border-radius: 10px;
