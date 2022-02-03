@@ -8,7 +8,7 @@ Convert from multiple currencies to Czech Koruny.
 
 Runs the app and a sidecar proxy in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the broswer.\
-The proxy server runs in [http://localhost:3000](http://localhost:3000).
+The proxy server runs in [http://localhost:5000](http://localhost:3000).
 
 ### `npm start`
 
