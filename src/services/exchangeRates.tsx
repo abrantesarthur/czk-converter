@@ -39,7 +39,6 @@ export class ExchangeRates {
 
   static get = async (): Promise<ExchangeRates> => {
     try {
-      // EXCHANGE_RATES_URL could be set in production for instance
       const response = await fetch("http://localhost:5000/czk-exchange-rates");
       const data = await response.text();
       return ExchangeRates.parse(data);
