@@ -43,6 +43,7 @@ export class ExchangeRates {
       const data = await response.text();
       return ExchangeRates.parse(data);
     } catch (e) {
+      // error is caught gracefully by ExchangeRatesPage component
       throw e;
     }
   };
