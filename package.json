@@ -22,7 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "concurrently \"npm --prefix proxy start app\" \"react-scripts start\"",
+    "dev": "concurrently \"npm --prefix sidecar-proxy start app\" \"react-scripts start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
